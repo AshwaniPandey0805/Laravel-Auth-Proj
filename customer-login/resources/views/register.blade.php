@@ -54,9 +54,28 @@
         }
     </style>
     <div class="container">
-        
-        <form > 
+        <div class="mt-5">
+            @if($errors->all())
+                <div class="col-12">
+                    @foreach($errors->all() as $error )
+                        <div class="alert alert-danger">{{error}}</div>
+                    @endforeach
+                </div>
+            @endif
+
+            @if(session()->has('error'))
+                <div class="alert alert-danger">{{session('error')}}</div>
+            @endif
+
+            @if(session()->has('success'))
+                <div class="alert alert-success">{{session('success')}}</div>
+            @endif
+        </div>
+
+
+        <form action="{{route('register.post')}}"  method="post"> 
         <h1 style="text-align: center; margin-bottom:20px ">Register User</h1>
+        @csrf
             <div class="mb-3">
                 <label for="username" class="form-label">Username:</label>
                 <input type="text" class="form-control" id="username" name="username">
@@ -71,10 +90,10 @@
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" >
             </div>
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <label for="cpassword" class="form-label">Confirm Password</label>
                 <input type="password" class="form-control" id="cpassword" name="cpassword" >
-            </div>
+            </div> -->
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Check me out</label>

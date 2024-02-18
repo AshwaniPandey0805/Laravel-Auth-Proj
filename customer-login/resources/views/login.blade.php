@@ -53,10 +53,30 @@
             font-size: 20px;
         }
     </style>
+    <div class="mt-5">
+            @if($errors->all())
+                <div class="col-12">
+                    @foreach($errors->all() as $error )
+                        <div class="alert alert-danger">{{$errors}}</div>
+                    @endforeach
+                </div>
+            @endif
+
+            @if(session()->has('error'))
+                <div class="alert alert-danger">{{session('error')}}</div>
+            @endif
+
+            @if(session()->has('success'))
+                <div class="alert alert-success">{{session('success')}}</div>
+            @endif
+        </div>
     <div class="container">
+
+        
         
         <form action="{{route('login.post')}}" method="post" > 
         <h1 style="text-align: center; margin-bottom:20px ">LOGIN</h1>
+            @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
