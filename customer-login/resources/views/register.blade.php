@@ -11,7 +11,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 50px;
+            margin-top: 30px;
             /* height: 100vh; This ensures the container takes up the full viewport height */
         }
         form {
@@ -56,7 +56,7 @@
     <div class="container">
         
         <form > 
-        <h1 style="text-align: center; margin-bottom:20px ">LOGIN</h1>
+        <h1 style="text-align: center; margin-bottom:20px ">Register User</h1>
             <div class="mb-3">
                 <label for="username" class="form-label">Username:</label>
                 <input type="text" class="form-control" id="username" name="username">
@@ -72,7 +72,7 @@
                 <input type="password" class="form-control" id="password" name="password" >
             </div>
             <div class="mb-3">
-                <label for="cpassword" class="form-label">Password</label>
+                <label for="cpassword" class="form-label">Confirm Password</label>
                 <input type="password" class="form-control" id="cpassword" name="cpassword" >
             </div>
             <div class="mb-3 form-check">

@@ -11,7 +11,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 50px;
+            margin-top: 30px;
             /* height: 100vh; This ensures the container takes up the full viewport height */
         }
         form {
@@ -55,7 +55,7 @@
     </style>
     <div class="container">
         
-        <form > 
+        <form action="{{route('login.post')}}" method="post" > 
         <h1 style="text-align: center; margin-bottom:20px ">LOGIN</h1>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>

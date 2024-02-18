@@ -8,6 +8,7 @@
     
   </head>
   <body style="background-color:rgba(0,0,0,0.78); color:white" >
+    @include('includes.header')
     @yield('content')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" ></script>
   </body>
