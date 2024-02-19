@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Login')
+@section('title', 'Register')
 @section('content')
     <style>
         /* body{
@@ -53,12 +53,11 @@
             font-size: 20px;
         }
     </style>
-    <div class="container">
-        <div class="mt-5">
+    <div class="mt-2">
             @if($errors->all())
                 <div class="col-12">
                     @foreach($errors->all() as $error )
-                        <div class="alert alert-danger">{{error}}</div>
+                        <div class="alert alert-danger">{{$error}}</div>
                     @endforeach
                 </div>
             @endif
@@ -71,9 +70,11 @@
                 <div class="alert alert-success">{{session('success')}}</div>
             @endif
         </div>
+    <div class="container">
+        
 
-
-        <form action="{{route('register.post')}}"  method="post"> 
+        <!-- action="{{route('register.post')}}"  method="post" -->
+        <form action="{{route('register.post')}}"  method="post" id="myForm"> 
         <h1 style="text-align: center; margin-bottom:20px ">Register User</h1>
         @csrf
             <div class="mb-3">
@@ -90,15 +91,15 @@
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" >
             </div>
-            <!-- <div class="mb-3">
+            <div class="mb-3">
                 <label for="cpassword" class="form-label">Confirm Password</label>
                 <input type="password" class="form-control" id="cpassword" name="cpassword" >
-            </div> -->
+            </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div>
-            <button type="submit" class="btn btn-primary">SIGN UP</button>
+            <button type="submit" class="btn btn-primary" id="submit-btn">SIGN UP</button>
             <div class="redirect-signin">
                 <small>Already, have an account !</small>
                 <span>
@@ -109,4 +110,59 @@
             </div>
         </form>
     </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+            <!-- <script>
+                document.getElementById('submit-btn').addEventListener('click', function(event) {
+                    event.preventDefault(); //
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "Do you want to submit this form?",
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, submit it!'
+                    }).then((result) => {  -->
+                        
+                        <!-- if (result.isConfirmed) {
+                            console.log("Working");
+                            // Collect form data
+                            var formData = new FormData(document.getElementById('myForm'));
+                            // var formData = new FormData(this);
+                            for (var pair of formData.entries()) {
+                                console.log(pair[0] + ': ' + pair[1]);
+                            }
+                            
+                            // Add CSRF token to the form data
+                            formData.append('csrf_token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+
+                            console.log("OR bahi",formData);
+
+                                // Send AJAX request
+                                fetch('{{ route("register.post") }}', {
+                                    method: 'POST',
+                                    body: formData
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    // Handle response data
+                                    console.log(data);
+                                })
+                                .catch(error => {
+                                    // Handle errors
+                                    console.error('Error:', error);
+                                });
+
+                            document.getElementById('myForm').addEventListener('submit',  function(event) {
+                                //  Prevent the default form submission
+
+                                document.getElementById('myForm').submit();
+
+                                
+                          }); -->
+                        <!-- } 
+                    }); 
+                });
+            </script> -->
 @endsection

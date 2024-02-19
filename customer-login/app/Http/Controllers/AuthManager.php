@@ -63,7 +63,7 @@ class AuthManager extends Controller
             'username' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
-            // 'cpassword' => 'required'
+            'cpassword' => 'required'
         ]);
 
         $data['name'] = $request->username;
@@ -71,19 +71,33 @@ class AuthManager extends Controller
         $data['password'] = Hash::make($request->password);
         // $data['cpassword'] = Hash::make($request->cpassword);
 
-        // if($data['pasword'] === $data['cpassword']){
-        //     $user = User::created($data);
-        // }else{
-        //     return redirect(route('register'))->with('error', 'Password not matched!');
-        // }
+        $password['password'] = $request->password;
+        $password['cpassword'] = $request->cpassword;
 
-        $user = User::create($data);
+        
+            
+            
 
-        if(!$user){
-            return redirect(route('register'))->with('error', 'Resgister failed! Please try again');
+        if($password['password'] !== $password['cpassword']){
+            return redirect(route('register'))->with('error', 'Password not matched!');
+        }else{
+            $user = User::create($data);
+            if(!$user){
+                return redirect(route('register'))->with('error', 'Resgister failed! Please try again');
+            }
+             
+            return redirect(route('login'))->with('success', 'Registration Successfull ✌️');
         }
 
-        return redirect(route('login'))->with('success', 'Registration Successfull ✌️');
+        
+        
+        // $user = User::create($data);
+
+        // dd($user);
+
+        
+        
+
     }
 
     function logout(){
