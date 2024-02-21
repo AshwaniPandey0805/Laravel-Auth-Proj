@@ -53,8 +53,6 @@
   }
 </style>
 
-{{-- {{auth()->user()->name}} --}}
-
 
 <div class="container">
   <h1>Welcome to Your Dashboard</h1>    

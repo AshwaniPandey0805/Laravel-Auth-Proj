@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Contracts\Session\Session;
+// use Illuminate\Contracts\Session\Session;
 // use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
 // use Illuminate\Notifications\Notifiable;
@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 // use Illuminate\Support\Facades\Redis;
 // use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Session;
 
 class AuthManager extends Controller
 {
@@ -23,6 +24,10 @@ class AuthManager extends Controller
      * @return void
      */
     function login(){
+
+        if(Auth::check()){
+            return redirect(route('home'))->with('success', 'Alreday Logined');
+        }
         return view('login');
     }
     
@@ -32,6 +37,9 @@ class AuthManager extends Controller
      * @return void
      */
     function register(){
+        if(Auth::check()){
+            return redirect(route('home'))->with('success', 'Alreday Logined');
+        }
         return view('register');
     }
     
@@ -103,8 +111,9 @@ class AuthManager extends Controller
      * @return void
      */
     function logout(){
-        Session::flush();
         Auth::logout();
+        Session::flush();
+        
 
         return redirect(route('login'))->with('success', "Logout Successfully");
     }
