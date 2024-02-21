@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard</title>
+@extends('layout')
+@section('title', 'Login')
+@section('content')
 <style>
-  body {
+  /* body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-  }
+    background-color: rgba(0, 0, 0, 0.68);
+  } */
   .container {
     max-width: 800px;
     margin: 20px auto;
@@ -18,6 +15,7 @@
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: black;
   }
   h1 {
     text-align: center;
@@ -26,11 +24,40 @@
   p {
     margin-bottom: 10px;
   }
+  .dashboard-graphic {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 400px;
+  }
+  /* .logout-button{ */
+    /* display: block; */
+    /* width: 50%; */
+    /* margin: auto;
+
+
+  } */
+  .logout-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .logout-button:hover {
+    background-color: #0056b3;
+  }
 </style>
-</head>
-<body>
+
+{{-- {{auth()->user()->name}} --}}
+
+
 <div class="container">
-  <h1>Welcome to Your Dashboard</h1>
+  <h1>Welcome to Your Dashboard</h1>    
   <p>This is a simple dashboard page.</p>
   <p>You can customize this page with your own content and features.</p>
   <p>For example, you can add:</p>
@@ -42,7 +69,6 @@
     <li>And much more...</li>
   </ul>
   <p>Feel free to modify this dashboard to suit your needs.</p>
-  <p><a href="logout.php">Logout</a></p>
+  {{-- <p><a href="{{route('login')}}" class="logout-button">Logout</a></p> --}}
 </div>
-</body>
-</html>
+@endsection

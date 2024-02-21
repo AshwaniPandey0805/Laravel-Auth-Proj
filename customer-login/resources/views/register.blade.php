@@ -73,7 +73,7 @@
     <div class="container">
         
 
-        <!-- action="{{route('register.post')}}"  method="post" -->
+        
         <form action="{{route('register.post')}}"  method="post" id="myForm"> 
         <h1 style="text-align: center; margin-bottom:20px ">Register User</h1>
         @csrf
@@ -111,8 +111,8 @@
         </form>
     </div>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
-            <!-- <script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+            <script>
                 document.getElementById('submit-btn').addEventListener('click', function(event) {
                     event.preventDefault(); //
                     Swal.fire({
@@ -123,9 +123,9 @@
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
                         confirmButtonText: 'Yes, submit it!'
-                    }).then((result) => {  -->
+                    }).then((result) => { 
                         
-                        <!-- if (result.isConfirmed) {
+                         if (result.isConfirmed) {
                             console.log("Working");
                             // Collect form data
                             var formData = new FormData(document.getElementById('myForm'));
@@ -144,15 +144,15 @@
                                     method: 'POST',
                                     body: formData
                                 })
-                                .then(response => response.json())
-                                .then(data => {
-                                    // Handle response data
-                                    console.log(data);
-                                })
-                                .catch(error => {
-                                    // Handle errors
-                                    console.error('Error:', error);
-                                });
+                                // .then(response => response.json())
+                                // .then(data => {
+                                //     // Handle response data
+                                //     console.log(data);
+                                // })
+                                // .catch(error => {
+                                //     // Handle errors
+                                //     console.error('Error:', error);
+                                // });
 
                             document.getElementById('myForm').addEventListener('submit',  function(event) {
                                 //  Prevent the default form submission
@@ -160,9 +160,9 @@
                                 document.getElementById('myForm').submit();
 
                                 
-                          }); -->
-                        <!-- } 
+                          }); 
+                         } 
                     }); 
                 });
-            </script> -->
+            </script> --}}
 @endsection

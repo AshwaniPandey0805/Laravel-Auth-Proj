@@ -57,7 +57,14 @@ class AuthManager extends Controller
         return redirect(route('login'))->with('error', 'Login detials are not valid');
 
     }
-
+    
+    /**
+     * Method registerPost
+     *
+     * @param Request $request [explicite description]
+     *
+     * @return void
+     */
     function registerPost(Request $request){
         $request->validate([
             'username' => 'required',
@@ -69,37 +76,32 @@ class AuthManager extends Controller
         $data['name'] = $request->username;
         $data['email'] = $request->email;
         $data['password'] = Hash::make($request->password);
-        // $data['cpassword'] = Hash::make($request->cpassword);
 
         $password['password'] = $request->password;
         $password['cpassword'] = $request->cpassword;
 
         
-            
-            
-
+        /**
+         * validating user password
+         */
         if($password['password'] !== $password['cpassword']){
             return redirect(route('register'))->with('error', 'Password not matched!');
         }else{
-            $user = User::create($data);
+            $user = User::create($data); 
             if(!$user){
                 return redirect(route('register'))->with('error', 'Resgister failed! Please try again');
             }
              
-            return redirect(route('login'))->with('success', 'Registration Successfull ✌️');
+            return redirect('/login')->with('success', 'Registration Successfull ✌️');
         }
 
-        
-        
-        // $user = User::create($data);
-
-        // dd($user);
-
-        
-        
-
     }
-
+    
+    /**
+     * Method logout
+     *
+     * @return void
+     */
     function logout(){
         Session::flush();
         Auth::logout();
