@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Login')
+@section('title', 'Home')
 @section('content')
 <style>
   /* body {

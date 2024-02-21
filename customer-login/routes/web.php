@@ -44,6 +44,12 @@ Route::post('/register',[AuthManager::class, 'registerPost'])->name('register.po
 
 Route::get('/logout', [AuthManager::class, 'logout'])->name('logout');
 
+Route::group(['middleware'=>'auth'], function(){
+    Route::get('/profile', function(){
+        return view('profile');
+    })->name('profile');
+});
+
 // Route::get('/register', 'RegisterController@showRegistrationForm')->name('register');
 
 // require __DIR__.'/auth.php';

@@ -26,7 +26,7 @@ class AuthManager extends Controller
     function login(){
 
         if(Auth::check()){
-            return redirect(route('home'))->with('success', 'Alreday Logined');
+            return redirect(route('profile'))->with('success', 'Alreday Logined');
         }
         return view('login');
     }
@@ -38,7 +38,7 @@ class AuthManager extends Controller
      */
     function register(){
         if(Auth::check()){
-            return redirect(route('home'))->with('success', 'Alreday Logined');
+            return redirect(route('profile'))->with('success', 'Alreday Logined');
         }
         return view('register');
     }
