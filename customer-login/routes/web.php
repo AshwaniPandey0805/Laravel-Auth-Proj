@@ -23,11 +23,11 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 // Route::get('/login', function(){
 //     return view('login');
@@ -46,9 +46,10 @@ Route::get('/logout', [AuthManager::class, 'logout'])->name('logout');
 
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/profile', function(){
-        return view('profile');
-    })->name('profile');
+        return view('registration_form.registrationPage');
+    })->name('registerPage');
 });
+
 
 // Route::get('/register', 'RegisterController@showRegistrationForm')->name('register');
 

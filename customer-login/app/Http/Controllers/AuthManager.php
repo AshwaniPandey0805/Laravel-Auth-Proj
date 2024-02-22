@@ -26,7 +26,7 @@ class AuthManager extends Controller
     function login(){
 
         if(Auth::check()){
-            return redirect(route('profile'))->with('success', 'Alreday Logined');
+            return redirect(route('registerPage'))->with('success', 'Alreday Logined');
         }
         return view('login');
     }
@@ -38,7 +38,7 @@ class AuthManager extends Controller
      */
     function register(){
         if(Auth::check()){
-            return redirect(route('profile'))->with('success', 'Alreday Logined');
+            return redirect(route('registerPage'))->with('success', 'Alreday Logined');
         }
         return view('register');
     }
@@ -59,7 +59,7 @@ class AuthManager extends Controller
         $credentials = $request->only('email', 'password');
 
         if(Auth::attempt($credentials)){
-            return redirect()->intended(route('home'));
+            return redirect()->intended(route('registerPage'));
         }
 
         return redirect(route('login'))->with('error', 'Login detials are not valid');

@@ -15,15 +15,15 @@ class customer_login_info extends Seeder
      */
     public function run(): void
     {
-        $currentDateTime = now();
-        $currentTime = $currentDateTime->format('H:i:s');
+        // $currentDateTime = now();
+        // $currentTime = $currentDateTime->format('H:i:s');
         DB::table('customer_login_info')->insert([
             "name" => Str::random(10),
             "email" => Str::random(10)."@gmail.com",
             "password" => Hash::make(Str::random(10)),
-            "created_at" => $currentTime,
-            "updated_at" => $currentTime,
-            "email_verified_at" => $currentTime,
+            "created_at" => now(),
+            "updated_at" => now(),
+            "email_verified_at" => now(),
 
         ]);
     }
