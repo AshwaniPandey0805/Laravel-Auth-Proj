@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customer_login_info', function (Blueprint $table) {
+        Schema::create('custome_login_register_table', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
@@ -23,7 +23,6 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-    
     }
 
     /**
