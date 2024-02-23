@@ -92,39 +92,50 @@
             
     
             <div class="col-md-6">
-                <form action="{{ route('register.post') }}" method="post" id="myForm"> 
+                <form action="{{ route('register.post') }}" method="post" id="myForm" enctype="multipart/form-data"> 
                     <h1 style="text-align: center; margin-bottom:20px">Register User</h1>
                     @csrf
                     
                     <div class="row">
                         <div class="col-md-6">
+                            {{-- first Name --}}
                             <div class="mb-3">
                                 <label for="firstName" class="form-label">First Name:</label>
                                 <input type="text" class="form-control" id="firstName" name="firstName">
                                 <small class="error" id="firstNameError">First name is required.</small>
                             </div>
+                            
+                            {{-- email --}}
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
                                 <input type="email" class="form-control" id="email" name="email">
                                 <small class="error" id="emailError">Email is required.</small>
                             </div>
+                            
+                            {{-- password --}}
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password" name="password">
                                 <small class="error" id="passwordError">Password is required.</small>
                             </div>
                         </div>
+
+                        {{-- lastname --}}
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="lastName" class="form-label">Last Name:</label>
                                 <input type="text" class="form-control" id="lastName" name="lastName">
                                 <small class="error" id="lastNameError">Last name is required.</small>
                             </div>
+
+                            {{-- phone Number --}}
                             <div class="mb-3">
                                 <label for="phoneNumber" class="form-label">Phone Number:</label>
                                 <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
                                 <small class="error" id="phoneNumberError">Please enter a valid phone number.</small>
                             </div>
+
+                            {{-- confirme Password --}}
                             <div class="mb-3">
                                 <label for="cpassword" class="form-label">Confirm Password</label>
                                 <input type="password" class="form-control" id="cpassword" name="cpassword">
@@ -148,7 +159,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="imageUpload" class="form-label">Upload Image</label>
-                                <input type="file" id="imageUpload" accept="image/*" class="form-control">
+                                <input type="file" id="imageUpload" accept="image/*" class="form-control" name="imageUpload">
                                 <small class="error" >Show Error</small>
                             </div>
                             

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 // use Illuminate\Support\Facades\Redis;
 // use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Session;
+use App\Models\Image;
 
 class AuthManager extends Controller
 {
@@ -75,15 +76,33 @@ class AuthManager extends Controller
      */
     function registerPost(Request $request){
         $request->validate([
-            'username' => 'required',
+            'firstName' => 'required',
+            'lastName' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
-            'cpassword' => 'required'
+            'phoneNumber' => 'required',
+            'imageUpload' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'profile' => 'required',
+
         ]);
 
-        $data['name'] = $request->username;
+        $data['first_name'] = $request->firstName;
+        $data['last_name'] = $request->lastName;
         $data['email'] = $request->email;
         $data['password'] = Hash::make($request->password);
+        $data['_role'] = $request->profile;
+        // dd($data['_role']);
+
+
+        $image = $request->file('imageUpload');
+        $imageName = $image->getClientOriginalName();
+
+        $image->storeAs('public/assets', $imageName);
+
+        // Save the image path in the database
+        $data['_image'] = 'storage/assets/' . $imageName;
+
+        
 
         $password['password'] = $request->password;
         $password['cpassword'] = $request->cpassword;
