@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthManager;
+use App\Models\User; // Import the User model
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +47,8 @@ Route::get('/logout', [AuthManager::class, 'logout'])->name('logout');
 
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/profile', function(){
-        return view('registration_form.registrationPage');
+        $users = User::all(); // Retrieve all users from the database
+        return view('registration_form.registrationPage', ['users' => $users]);
     })->name('registerPage');
 });
 

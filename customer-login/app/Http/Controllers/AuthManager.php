@@ -27,6 +27,7 @@ class AuthManager extends Controller
     function login(){
 
         if(Auth::check()){
+            // $users = User::all(); // Retrieve all users from the database
             return redirect(route('registerPage'))->with('success', 'Alreday Logined');
         }
         return view('login');
@@ -123,6 +124,14 @@ class AuthManager extends Controller
         }
 
     }
+
+    // public function index()
+    // {
+    //     $users = User::all(); // Retrieve all users from the database
+    //     return view('users.index', ['users' => $users]); // Pass the users data to the Blade view
+    // }
+
+    
     
     /**
      * Method logout
