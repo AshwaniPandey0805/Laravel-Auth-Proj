@@ -34,14 +34,14 @@
 
 
   <!-- Navbar -->
-  @foreach ($users as $user)
+  
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Admin Dashboard</a>
         <div class="admin-info">
             <img src="" alt="Admin Image" class="admin-image">
-            <p>{{$user->_image}}</p>
-            <span>Welcome, {{$user->first_name}} {{$user->last_name}}</span>
+            {{-- <p>{{$user->_image}}</p> --}}
+            <span>Ashwani Pandey</span>
         </div>
     </div>
 </nav>
@@ -72,5 +72,5 @@
         </div>
     </div>
 </div>
-@endforeach
+
 @endsection
