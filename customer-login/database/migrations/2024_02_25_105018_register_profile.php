@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('custome_login_register_table', function (Blueprint $table) {
+        Schema::create('register_profile', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('email_id');
+            $table->string('phone_number');
             $table->string('password');
-            $table->string('_role');
-            $table->string('_image');
-            $table->rememberToken();
             $table->timestamps();
+            $table->foreignId('role_id_fk')->constrained('roles');
         });
     }
 
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('regsiter_profile');
     }
 };

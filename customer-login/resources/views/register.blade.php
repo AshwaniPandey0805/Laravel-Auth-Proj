@@ -156,14 +156,14 @@
                                 <small class="error" >Show Error</small>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        {{-- <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="imageUpload" class="form-label">Upload Image</label>
                                 <input type="file" id="imageUpload" accept="image/*" class="form-control" name="imageUpload">
                                 <small class="error" >Show Error</small>
                             </div>
                             
-                        </div>
+                        </div> --}}
                     </div>
         
                     <button type="submit" class="btn btn-primary btn-block">SIGN UP</button>
