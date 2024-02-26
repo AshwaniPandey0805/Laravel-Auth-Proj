@@ -22,13 +22,17 @@ class RoleController extends Controller
         // dd($role);
 
         $role = Role::create($role);
+
+        if($role){
+            return redirect(route('addRole'));
+        }
         
 
-        if($role == TRUE){
-            dd("role added");
-        }else{
-            dd("Not added");
-        }
+        // if($role == TRUE){
+        //     dd("role added");
+        // }else{
+        //     dd("Not added");
+        // }
 
     }
 }

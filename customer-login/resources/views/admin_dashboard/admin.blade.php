@@ -119,6 +119,7 @@
         <h1>Welcome to Admin Dashboard</h1>
     </div>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu mi ut lacus fermentum luctus. Integer aliquet tristique magna sit amet accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+    <button><a href="{{route('addMoreUser')}}">ADD USER</a></button>
     <div>
         <table>
             <thead>
@@ -141,7 +142,7 @@
                     <td>{{$item->last_name}}</td>
                     <td>{{$item->email}}</td>
                     <td>{{$item->phone_number}}</td>
-                    <td>{{$item->role_id}}</td>
+                    <td>{{$item->role}}</td>
                     <td class="button-group">
                         <button class="button-edit">Edit</button>
                         <button class="button-view">View</button>

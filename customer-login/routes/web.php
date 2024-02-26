@@ -75,6 +75,12 @@ Route::get('/add-role' , function(){
 
 Route::post('/add-role', [RoleController::class,'addRole'])->name('addRole.post');
 
+Route::get('/add-more-user', function(){
+    return view('addUser.adduser');
+})->name('addMoreUser');
+
+Route::post('/add-more-user', [AuthManager::class,'addOtherUser'])->name('addMoreUser.post');
+
 
 // Route::get('/register', 'RegisterController@showRegistrationForm')->name('register');
 

@@ -145,6 +145,68 @@ class AuthManager extends Controller
 
     }
 
+    public function addOtherUser(Request $request){
+        $request->validate([
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required',
+            'phoneNumber' => 'required',
+            'role' => 'required'
+
+        ]);
+
+        $data['first_name'] = $request->firstName;
+        $data['last_name'] = $request->lastName;
+        $data['email'] = $request->email;
+        $data['password'] = Hash::make($request->password);
+        $data['phone_number'] = $request->phoneNumber;
+        $data['role'] = $request->role;
+        
+        // dd($data['_role']);
+
+
+        // $image = $request->file('imageUpload');
+        // $imageName = $image->getClientOriginalName();
+
+        // $image->storeAs('public/assets', $imageName);
+
+        // Save the image path in the database
+        // $data['_image'] = 'storage/assets/' . $imageName;
+
+        
+
+        
+
+
+
+        // $data['role_name'];
+        // dd($data);
+        $role['role_name'] = $request->role;
+        
+
+        // dd($role);
+        
+
+        // dd($role['role_name']);
+
+        
+        /**
+         * validating user password
+         * 
+         */
+            $user = RegisterProfile::create($data); 
+            $role = Role::create($role);
+            
+            if(!$user){
+                return redirect(route('addMoreUser'))->with('error', 'Resgister failed! Please try again');
+            }
+             
+            return redirect(route('registerPage'))->with('success', 'Registration Successfull ✌️');
+        }
+    }
+
+
     // public function index()
     // {
     //     $users = User::all(); // Retrieve all users from the database
@@ -165,4 +227,4 @@ class AuthManager extends Controller
 
         return redirect(route('login'))->with('success', "Logout Successfully");
     }
-}
+

@@ -79,6 +79,8 @@
         border: none;
         cursor: pointer;
         border-radius: 3px;
+        font-weight: 600;
+        font-size: 15px
     }
 
     /* Edit button style */
@@ -123,10 +125,10 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Role ID</th>
                     <th>Role Name</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
+                    <th>Action</th>
+                    {{-- <th>Created At</th>
+                    <th>Updated At</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -134,10 +136,14 @@
                 @foreach($roles as $role)
                 <tr>
                     <td>{{ $role->id }}</td>
-                    <td>{{ $role->role_id }}</td>
                     <td>{{ $role->role_name }}</td>
-                    <td>{{ $role->created_at }}</td>
-                    <td>{{ $role->updated_at }}</td>
+                    <td class="button-group">
+                        <button class="button-edit">Edit</button>
+                        {{-- <button class="button-view">View</button> --}}
+                        <button class="button-delete">Delete</button>
+                    </td>
+                    {{-- <td>{{ $role->created_at }}</td>
+                    <td>{{ $role->updated_at }}</td> --}}
                 </tr>
                 @endforeach
             </tbody>
