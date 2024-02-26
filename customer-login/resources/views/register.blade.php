@@ -151,7 +151,7 @@
                                 <select name="profile" id="profile" class="form-control">
                                     <option value="">Select</option>
                                     <option value="1">ADMIN</option>
-                                    <option value="0">USER</option>
+                                    <option value="2">USER</option>
                                 </select>
                                 <small class="error" >Show Error</small>
                             </div>

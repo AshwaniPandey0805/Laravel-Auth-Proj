@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('register_profile', function (Blueprint $table) {
+        Schema::create('roles', function(Blueprint $table){
+
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email_id');
-            $table->string('phone_number');
-            $table->string('password');
+            $table->unsignedBigInteger('role_id');
+            $table->string('role_name');
             $table->timestamps();
-            $table->foreignId('role_id_fk')->constrained('roles');
+            $table->foreign('role_id')->references('id')->on('register_profile');
+
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('regsiter_profile');
+        //
     }
 };

@@ -60,8 +60,12 @@ class AuthManager extends Controller
         ]);
 
         $credentials = $request->only('email', 'password');
+        // dd($credentials);
 
-        if(Auth::attempt($credentials)){
+        // dd(Auth::attempt($credentials));
+
+        if(Auth::guard('web')->attempt($credentials)){
+            
             return redirect()->intended(route('registerPage'));
         }
 
@@ -89,10 +93,10 @@ class AuthManager extends Controller
 
         $data['first_name'] = $request->firstName;
         $data['last_name'] = $request->lastName;
-        $data['email_id'] = $request->email;
+        $data['email'] = $request->email;
         $data['password'] = Hash::make($request->password);
         $data['phone_number'] = $request->phoneNumber;
-        $data['role_id_fk'] = $request->profile;
+        $data['role_id'] = $request->profile;
         // dd($data['_role']);
 
 
@@ -109,11 +113,21 @@ class AuthManager extends Controller
         $password['password'] = $request->password;
         $password['cpassword'] = $request->cpassword;
 
+
+
         // $data['role_name'];
         // dd($data);
-        if($data['role_id_fk'] === "1"){
-            $role['role_name'] = 'Admin';
+        if($data['role_id'] === "1"){
+            $role['role_id'] = 1;
+            $role['role_name'] = "admin";
         }
+        if($data['role_id'] === "2"){
+            $role['role_id'] = 2;
+            $role['role_name'] = "user";
+        }
+
+        // dd($role);
+        
 
         // dd($role['role_name']);
 
@@ -125,8 +139,8 @@ class AuthManager extends Controller
         if($password['password'] !== $password['cpassword']){
             return redirect(route('register'))->with('error', 'Password not matched!');
         }else{
-            $role = Role::create($role);
             $user = RegisterProfile::create($data); 
+            $role = Role::create($role);
             
             if(!$user){
                 return redirect(route('register'))->with('error', 'Resgister failed! Please try again');

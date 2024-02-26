@@ -9,10 +9,13 @@ class Role extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['role_name'];
+    protected $fillable = [
+        'role_name',
+        'role_id'
+    ];
 
     public function registerProfile()
     {
-        return $this->belongsTo(RegisterProfile::class, 'role_id_fk', 'id');
+        return $this->belongsTo(RegisterProfile::class, 'role_id');
     }
 }

@@ -47,8 +47,8 @@ Route::get('/logout', [AuthManager::class, 'logout'])->name('logout');
 
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/profile', function(){
-        $users = User::all(); // Retrieve all users from the database
-        return view('admin_dashboard.admin', ['users' => $users]);
+        // $users = User::all(); // Retrieve all users from the database
+        return view('admin_dashboard.admin');
     })->name('registerPage');
 });
 

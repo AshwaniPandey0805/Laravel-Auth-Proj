@@ -2,26 +2,30 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
+use Illuminate\Contracts\Auth\Authenticatable;
 
-class RegisterProfile extends Model
+class RegisterProfile extends Model implements Authenticatable
 {
     use HasFactory;
-    protected $table = 'register_profile';
+    use AuthenticatableTrait;
+    protected $table = 'register_profile';  
 
     protected $fillable = [
         'first_name', 
         'last_name', 
-        'email_id', 
+        'email', 
         'phone_number', 
         'password', 
-        'role_id_fk'
+        'role_id'
     ];
 
     public function role()
     {
-        return $this->hasOne(Role::class, 'id', 'role_id_fk');
+        return $this->hasOne(Role::class, 'role_id');
     }
 
     
