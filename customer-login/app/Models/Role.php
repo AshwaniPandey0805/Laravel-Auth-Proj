@@ -16,6 +16,6 @@ class Role extends Model
 
     public function registerProfile()
     {
-        return $this->belongsTo(RegisterProfile::class, 'role_id');
+        return $this->belongsTo(RegisterProfile::class, 'role');
     }
 }

@@ -96,7 +96,7 @@ class AuthManager extends Controller
         $data['email'] = $request->email;
         $data['password'] = Hash::make($request->password);
         $data['phone_number'] = $request->phoneNumber;
-        $data['role_id'] = $request->profile;
+        $data['role'] = $request->profile;
         // dd($data['_role']);
 
 
@@ -117,14 +117,8 @@ class AuthManager extends Controller
 
         // $data['role_name'];
         // dd($data);
-        if($data['role_id'] === "1"){
-            $role['role_id'] = 1;
-            $role['role_name'] = "admin";
-        }
-        if($data['role_id'] === "2"){
-            $role['role_id'] = 2;
-            $role['role_name'] = "user";
-        }
+        $role['role_name'] = $request->profile;
+        
 
         // dd($role);
         

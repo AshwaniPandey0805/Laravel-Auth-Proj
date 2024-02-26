@@ -3,7 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthManager;
+use App\Http\Controllers\RoleController;
 use App\Models\RegisterProfile;
+use App\Models\Role;
 use App\Models\User; // Import the User model
 
 /*
@@ -50,12 +52,28 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/profile', function(){
         $users = RegisterProfile::all(); // Retrieve all users from the database
         return view('admin_dashboard.admin', ['users' => $users]);
+
+        Route::get('/role', function(){
+            $role = Role::all();
+            return view('role.role',['roles' => $role]);
+        })->name('role');
     })->name('registerPage');
 });
 
 Route::get('/admin', function(){
     return view('admin_dashboard.admin');
 });
+
+Route::get('/role', function(){
+    $role = Role::all();
+    return view('role.role',['roles' => $role]);
+})->name('role');
+
+Route::get('/add-role' , function(){
+    return view('role.addRole');
+})->name('addRole');
+
+Route::post('/add-role', [RoleController::class,'addRole'])->name('addRole.post');
 
 
 // Route::get('/register', 'RegisterController@showRegistrationForm')->name('register');

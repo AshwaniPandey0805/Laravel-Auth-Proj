@@ -102,17 +102,16 @@
 </head>
 <body>
 
-<div class="sidebar">
-    <ul>
-        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-        <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-        <li><a href="{{route('role')}}"><i class="fa fa-user"></i> Role</a></li>
-        <li><a href="#"><i class="fa fa-cogs"></i> Settings</a></li>
-        <li><a href="#"><i class="fa fa-envelope"></i> Messages</a></li>
-        <li><a href="#"><i class="fa fa-chart-bar"></i> Analytics</a></li>
-        <li><a href="{{route('logout')}}"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
-    </ul>
-</div>
+    <div class="sidebar">
+        <ul>
+            <li><a href="{{route('register')}}"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
+            <li><a href="{{route('addRole')}}"><i>ADD ROLE</i></a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            
+        </ul>
+    </div>
 
 <div class="content">
     <div class="header">
@@ -124,33 +123,23 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Phone Number</th>
                     <th>Role ID</th>
-                    <th>Action</th>
-                    
+                    <th>Role Name</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $item)
+                <!-- Loop through roles data and populate rows -->
+                @foreach($roles as $role)
                 <tr>
-                    <td>{{$item->id}}</td>
-                    <td>{{$item->first_name}}</td>
-                    <td>{{$item->last_name}}</td>
-                    <td>{{$item->email}}</td>
-                    <td>{{$item->phone_number}}</td>
-                    <td>{{$item->role_id}}</td>
-                    <td class="button-group">
-                        <button class="button-edit">Edit</button>
-                        <button class="button-view">View</button>
-                        <button class="button-delete">Delete</button>
-                    </td>
-                    
-                </tr> 
+                    <td>{{ $role->id }}</td>
+                    <td>{{ $role->role_id }}</td>
+                    <td>{{ $role->role_name }}</td>
+                    <td>{{ $role->created_at }}</td>
+                    <td>{{ $role->updated_at }}</td>
+                </tr>
                 @endforeach
-                
             </tbody>
         </table>
     </div>

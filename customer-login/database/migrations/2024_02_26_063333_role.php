@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('roles', function(Blueprint $table){
 
             $table->id();
-            $table->unsignedBigInteger('role_id');
             $table->string('role_name');
             $table->timestamps();
-            $table->foreign('role_id')->references('id')->on('register_profile');
+            // $table->foreign('role_name')->references('role')->on('register_profile');
 
         });
     }

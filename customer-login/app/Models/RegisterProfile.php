@@ -20,12 +20,12 @@ class RegisterProfile extends Model implements Authenticatable
         'email', 
         'phone_number', 
         'password', 
-        'role_id'
+        'role'
     ];
 
     public function role()
     {
-        return $this->hasOne(Role::class, 'role_id');
+        return $this->hasOne(Role::class, 'role_name');
     }
 
     

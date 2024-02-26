@@ -98,61 +98,69 @@
         background-color: #e74c3c;
         color: #fff;
     }
+    form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 0 auto;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
 </style>
 </head>
 <body>
 
-<div class="sidebar">
-    <ul>
-        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-        <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-        <li><a href="{{route('role')}}"><i class="fa fa-user"></i> Role</a></li>
-        <li><a href="#"><i class="fa fa-cogs"></i> Settings</a></li>
-        <li><a href="#"><i class="fa fa-envelope"></i> Messages</a></li>
-        <li><a href="#"><i class="fa fa-chart-bar"></i> Analytics</a></li>
-        <li><a href="{{route('logout')}}"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
-    </ul>
-</div>
+    <div class="sidebar">
+        <ul>
+            <li><a href="{{route('register')}}"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
+            <li><a href="{{route('addRole')}}"><i>ADD ROLE</i></a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            
+        </ul>
+    </div>
 
 <div class="content">
     <div class="header">
-        <h1>Welcome to Admin Dashboard</h1>
+        <h1>ADD ROLE </h1>
     </div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu mi ut lacus fermentum luctus. Integer aliquet tristique magna sit amet accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+    <p></p>
+    <br>
     <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Phone Number</th>
-                    <th>Role ID</th>
-                    <th>Action</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($users as $item)
-                <tr>
-                    <td>{{$item->id}}</td>
-                    <td>{{$item->first_name}}</td>
-                    <td>{{$item->last_name}}</td>
-                    <td>{{$item->email}}</td>
-                    <td>{{$item->phone_number}}</td>
-                    <td>{{$item->role_id}}</td>
-                    <td class="button-group">
-                        <button class="button-edit">Edit</button>
-                        <button class="button-view">View</button>
-                        <button class="button-delete">Delete</button>
-                    </td>
-                    
-                </tr> 
-                @endforeach
-                
-            </tbody>
-        </table>
+        <form action="{{route('addRole.post')}}" method="POST">
+            {{-- <label for="user_id">User ID:</label><br>
+            <input type="text" id="user_id" name="user_id"><br> --}}
+            @csrf
+    
+            <label for="role_id">Role ID:</label><br>
+            <input type="text" id="role_id" name="role_id"><br>
+    
+            <label for="role_name">Role Name:</label><br>
+            <input type="text" id="role_name" name="role_name"><br>
+    
+            <input type="submit" value="Submit">
+        </form>
     </div>
 </div>
 
@@ -163,4 +171,4 @@
 </div>
 
 </body>
-</html>
+</html> 
